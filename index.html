@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Akanksha 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-gradient: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      --card-bg: rgba(255, 255, 255, 0.45);
+      --text: #5a1038;
+      --accent: #ff4d8d;
+    }
+
+    /* 🌙 Dark Mode */
+    .dark {
+      --bg-gradient: linear-gradient(135deg, #0b0b18, #12081a);
+      --card-bg: rgba(0, 0, 0, 0.55);
+      --text: #ffe6f2;
+      --accent: #ff7eb3;
+    }
+
+    /* 🎆 Birthday mode */
+    .birthday-mode {
+      background: #000 !important;
+    }
+
+    .birthday-mode .container {
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 126, 179, 0.35);
+      box-shadow: 0 0 40px rgba(255, 126, 179, 0.45);
+    }
+
+    .birthday-mode h1,
+    .birthday-mode .subtitle,
+    .birthday-mode .message,
+    .birthday-mode .label,
+    .birthday-mode #countdown {
+      color: #ffe6f2;
+    }
+
+    .birthday-mode .number {
+      color: #ff9acb;
+      text-shadow: 0 0 12px rgba(255, 154, 203, 0.9);
+    }
+
+    /* 🌍 Body */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Poppins", system-ui, sans-serif;
+      background:
+        var(--bg-gradient),
+        url("https://images.unsplash.com/photo-1529634892929-05d2b52b4d4b");
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      overflow-x: hidden;
+      transition: background 0.6s ease;
+    }
+
+    /* 🪟 Card */
+    .container {
+      text-align: center;
+      padding: 40px 30px;
+      background: var(--card-bg);
+      backdrop-filter: blur(12px);
+      border-radius: 28px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+      width: 100%;
+      max-width: 900px;
+      position: relative;
+    }
+
+    .dark h1,
+    .dark .subtitle,
+    .dark .message,
+    .dark .label {
+      color: #ffe6f2;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-bottom: 20px;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      opacity: 0.9;
+    }
+
+    .message {
+      margin-bottom: 30px;
+      font-weight: 500;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+    }
+
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 15px;
+      justify-content: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .box {
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 20px;
+      padding: 20px 15px;
+      transition: transform 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-5px);
+    }
+
+    .dark .box {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .birthday-mode .box {
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .number {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: bold;
+      color: var(--accent);
+      display: block;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .label {
+      font-size: clamp(0.65rem, 2vw, 0.8rem);
+      opacity: 0.85;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+    }
+
+    /* 🌙 Toggle */
+    .toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      border: none;
+      border-radius: 50px;
+      padding: 10px 16px;
+      cursor: pointer;
+      z-index: 5;
+      backdrop-filter: blur(10px);
+      color: var(--text);
+      font-size: 1.2rem;
+      transition: transform 0.2s ease;
+    }
+
+    .toggle:hover {
+      transform: scale(1.1);
+    }
+
+    .toggle:active {
+      transform: scale(0.95);
+    }
+
+    /* 🔄 Replay Button */
+    .replay-btn {
+      background: linear-gradient(135deg, #ff7eb3, #ff758c);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 15px 35px;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 20px rgba(255, 126, 179, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .replay-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(255, 126, 179, 0.6);
+    }
+
+    .replay-btn:active {
+      transform: translateY(-1px);
+    }
+
+    /* 🎆 Fireworks canvas */
+    canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Birthday wishes styling */
+    .wishes-container {
+      animation: fadeIn 2s ease-in;
+      padding: 20px 10px;
+    }
+
+    .wishes-container .birthday-title {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      margin-bottom: 30px;
+      text-shadow: 0 0 20px rgba(255, 182, 193, 0.8);
+      line-height: 1.3;
+    }
+
+    .wishes-container .wishes-text {
+      font-style: italic;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .wishes-container p {
+      margin: 20px 0;
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      line-height: 1.8;
+    }
+
+    .wishes-container .final-wish {
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      margin-top: 30px;
+      color: #ffb3d9;
+      font-weight: 600;
+      text-shadow: 0 0 15px rgba(255, 179, 217, 0.6);
+    }
+
+    .wishes-container .closing {
+      margin-top: 35px;
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 600;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Mobile optimization */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        padding: 25px 15px;
+        border-radius: 20px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .countdown {
+        gap: 10px;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+
+      .box {
+        padding: 15px 10px;
+        text-align: center;
+      }
+
+      .toggle {
+        top: 15px;
+        right: 15px;
+        padding: 8px 12px;
+        font-size: 1rem;
+      }
+
+      .wishes-container {
+        padding: 10px 5px;
+        text-align: center;
+      }
+
+      .wishes-container .wishes-text {
+        font-style: italic;
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .wishes-container p {
+        margin: 15px auto;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+
+      .subtitle {
+        font-size: 0.85rem;
+        text-align: center;
+      }
+
+      .message {
+        font-size: 0.95rem;
+        text-align: center;
+      }
+
+      .number {
+        text-align: center;
+        margin: 0 auto;
+      }
+
+      .label {
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 8px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        padding: 20px 12px;
+        max-width: 100%;
+        text-align: center;
+      }
+
+      .countdown {
+        gap: 8px;
+        margin: 0 auto;
+      }
+
+      .box {
+        padding: 12px 8px;
+        border-radius: 15px;
+        text-align: center;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        text-align: center;
+      }
+
+      .subtitle {
+        margin-bottom: 12px;
+        font-size: 0.8rem;
+        text-align: center;
+      }
+
+      .message {
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      .number {
+        font-size: 1.2rem;
+        margin-bottom: 5px;
+        text-align: center;
+      }
+
+      .label {
+        font-size: 0.6rem;
+        text-align: center;
+      }
+
+      .wishes-container {
+        text-align: center;
+      }
+
+      .wishes-container .birthday-title {
+        font-size: 1.2rem;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .wishes-container .wishes-text {
+        font-style: italic;
+        text-align: center;
+        margin: 0 auto;
+        padding: 0 5px;
+      }
+
+      .wishes-container p {
+        font-size: 0.95rem;
+        font-style: italic;
+        margin: 12px auto;
+        line-height: 1.6;
+        text-align: center;
+      }
+
+      .wishes-container .final-wish {
+        font-size: 1rem;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .wishes-container .closing {
+        font-size: 1.05rem;
+        margin-top: 25px;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 360px) {
+      body {
+        padding: 5px;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        padding: 15px 10px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 1.2rem;
+        text-align: center;
+      }
+
+      .countdown {
+        gap: 6px;
+        margin: 0 auto;
+      }
+
+      .box {
+        padding: 10px 6px;
+        text-align: center;
+      }
+
+      .number {
+        font-size: 1.4rem;
+        text-align: center;
+      }
+
+      .label {
+        font-size: 0.55rem;
+        text-align: center;
+      }
+
+      .wishes-container {
+        text-align: center;
+      }
+
+      .wishes-container .birthday-title {
+        font-size: 1.4rem;
+        text-align: center;
+      }
+
+      .wishes-container .wishes-text {
+        font-style: italic;
+        text-align: center;
+        padding: 0 3px;
+      }
+
+      .wishes-container p {
+        font-size: 0.85rem;
+        text-align: center;
+        margin: 10px auto;
+      }
+    }
+
+    /* Landscape mobile */
+    @media (max-height: 600px) and (orientation: landscape) {
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 20px 15px;
+      }
+
+      h1 {
+        margin-bottom: 10px;
+      }
+
+      .subtitle,
+      .message {
+        margin-bottom: 15px;
+      }
+
+      .wishes-container p {
+        margin: 12px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <button class="toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">🌙 / ☀️</button>
+  <canvas id="fireworks"></canvas>
+
+  <div class="container">
+    <h1 id="mainTitle">🎉 Akanksha's Birthday 🎉</h1>
+    <div class="subtitle" id="mainSubtitle">Every second closer to her special day</div>
+    <div class="message" id="ageMessage"></div>
+
+    <div class="countdown" id="countdown">
+      <div class="box">
+        <div class="number" id="days">0</div>
+        <div class="label">Days</div>
+      </div>
+      <div class="box">
+        <div class="number" id="hours">0</div>
+        <div class="label">Hours</div>
+      </div>
+      <div class="box">
+        <div class="number" id="minutes">0</div>
+        <div class="label">Minutes</div>
+      </div>
+      <div class="box">
+        <div class="number" id="seconds">0</div>
+        <div class="label">Seconds</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* 🌗 Theme toggle */
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }
+
+    /* Load saved theme */
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
+
+    /* 🎂 Age */
+    const currentYear = new Date().getFullYear();
+    const birthYear = 2002;
+    const turningAge = currentYear - birthYear + 1;
+    document.getElementById("ageMessage").innerHTML = `She is turning <strong>${turningAge}</strong> 🎂✨`;
+
+    /* ⏳ Countdown */
+    const targetDate = new Date("January 23, 2026 00:00:00").getTime();
+    let fireworksStarted = false;
+    let replayMode = false;
+    let replayTimer = null;
+
+    function showBirthdayWishes() {
+      document.body.classList.add("birthday-mode");
+
+      document.getElementById('mainTitle').style.display = 'none';
+      document.getElementById('mainSubtitle').style.display = 'none';
+      document.getElementById('ageMessage').style.display = 'none';
+
+      document.getElementById("countdown").innerHTML = `
+    <div class="wishes-container">
+      <div class="birthday-title">
+        💖🎂 Happy Birthday Akanksha! 🎂💖
+      </div>
+      <div class="wishes-text">
+        <p>✨ May this special day bring you endless joy, laughter, and unforgettable moments! ✨</p>
+        
+        <p>🌟 You light up every room with your beautiful smile and warm heart. Your kindness touches everyone around you! 🌟</p>
+        
+        <p>🎈 Here's to another year of amazing adventures, dreams coming true, and making precious memories that will last forever! 🎈</p>
+        
+        <p>💫 Keep shining bright like the star you are! The world is truly better with you in it. May all your wishes come true! 💫</p>
+        
+        <p>🌸 Thank you for being such an incredible person. Your presence makes life more beautiful! 🌸</p>
+        
+        <p class="final-wish">
+          🎊 Wishing you love, happiness, success, and all the wonderful things you deserve! 🎊
+        </p>
+        
+        <p class="closing">
+          🎉 Have the most amazing birthday ever! 🎉
+        </p>
+        
+        <button class="replay-btn" onclick="startReplay()">🔄 Replay Wishes</button>
+      </div>
+    </div>
+  `;
+
+      if (!fireworksStarted) {
+        startFireworks();
+        fireworksStarted = true;
+      }
+    }
+
+    function startReplay() {
+      replayMode = true;
+      let totalSeconds = 5
+
+      // Clear fireworks but keep pink background
+      particles = [];
+
+      // Remove birthday mode to restore pink gradient
+      document.body.classList.remove("birthday-mode");
+
+      // Show headers again with replay message
+      document.getElementById('mainTitle').style.display = 'block';
+      document.getElementById('mainTitle').textContent = '🎉 Get Ready Again! 🎉';
+      document.getElementById('mainSubtitle').style.display = 'block';
+      document.getElementById('mainSubtitle').textContent = 'Birthday wishes coming up in...';
+      document.getElementById('ageMessage').style.display = 'none';
+
+      // Show replay countdown with same 4-box layout
+      document.getElementById("countdown").innerHTML = `
+      <div class="countdown" id="countdown">
+        <div class="box">
+          <div class="number" id="days">0</div>
+          <div class="label">Days</div>
+        </div>
+        <div class="box">
+          <div class="number" id="hours">0</div>
+          <div class="label">Hours</div>
+        </div>
+        <div class="box">
+          <div class="number" id="minutes">0</div>
+          <div class="label">Minutes</div>
+        </div>
+        <div class="box">
+          <div class="number" id="replaySeconds">${totalSeconds}</div>
+          <div class="label">Seconds</div>
+        </div>
+      </div>
+  `;
+
+      if (replayTimer) clearInterval(replayTimer);
+
+      replayTimer = setInterval(() => {
+        totalSeconds--;
+
+        const secondsEl = document.getElementById("replaySeconds");
+        if (secondsEl) {
+          secondsEl.textContent = totalSeconds;
+        }
+
+        if (totalSeconds <= 0) {
+          clearInterval(replayTimer);
+          replayMode = false;
+          // Restore original title
+          document.getElementById('mainTitle').textContent = '🎉 Akanksha\'s Birthday 🎉';
+          document.getElementById('mainSubtitle').textContent = 'Every second closer to her special day';
+          showBirthdayWishes();
+        }
+      }, 1000);
+    }
+
+    function updateCountdown() {
+      if (replayMode) return;
+
+      const now = Date.now();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        if (!document.querySelector('.wishes-container')) {
+          showBirthdayWishes();
+        }
+        return;
+      }
+
+      const days = Math.floor(diff / 86400000);
+      const hours = Math.floor((diff / 3600000) % 24);
+      const minutes = Math.floor((diff / 60000) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      const daysEl = document.getElementById("days");
+      const hoursEl = document.getElementById("hours");
+      const minutesEl = document.getElementById("minutes");
+      const secondsEl = document.getElementById("seconds");
+
+      if (daysEl) daysEl.textContent = days;
+      if (hoursEl) hoursEl.textContent = hours;
+      if (minutesEl) minutesEl.textContent = minutes;
+      if (secondsEl) secondsEl.textContent = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    /* 🎆 Fireworks */
+    const canvas = document.getElementById("fireworks");
+    const ctx = canvas.getContext("2d");
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    let particles = [];
+
+    function startFireworks() {
+      setInterval(() => {
+        if (replayMode) return;
+
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height * 0.5;
+        const particleCount = window.innerWidth < 768 ? 80 : 150;
+
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x, y,
+            angle: Math.random() * Math.PI * 2,
+            speed: Math.random() * 4 + 2,
+            life: 130,
+            color: `hsl(${Math.random() * 360},100%,75%)`
+          });
+        }
+      }, 900);
+      animate();
+    }
+
+    function animate() {
+      ctx.fillStyle = "rgba(0,0,0,0.25)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      if (!replayMode) {
+        particles = particles.filter(p => {
+          p.x += Math.cos(p.angle) * p.speed;
+          p.y += Math.sin(p.angle) * p.speed;
+          p.life--;
+
+          if (p.life > 0) {
+            ctx.beginPath();
+            ctx.fillStyle = p.color;
+            ctx.arc(p.x, p.y, 2.3, 0, Math.PI * 2);
+            ctx.fill();
+            return true;
+          }
+          return false;
+        });
+      }
+
+      requestAnimationFrame(animate);
+    }
+  </script>
+
+</body>
+
+</html>
